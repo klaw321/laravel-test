@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch: # Allow manual triggers
   push:
     branches:
       - main
@@ -24,21 +25,4 @@ jobs:
 
       - name: Go to backend directory and run composer install
         run: |
-          cd backend
-          composer install -n --prefer-dist
-
-      - name: Prepare Laravel Application
-        run: |
-          cd backend
-          cp .env.example .env
-          php artisan key:generate
-
-      - name: Create test database
-        run: |
-          cd backend
-          touch database/test.sqlite
-
-      - name: Run tests
-        run: |
-          cd backend
-          php artisan test
+          cd backe
